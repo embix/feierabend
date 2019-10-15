@@ -1,5 +1,7 @@
 name: build-xgo
-on: [push]
+on: 
+  push:
+  pull_request:
 jobs:
   xgo:
     name: Build cross platform
@@ -20,3 +22,4 @@ jobs:
         v: true
         x: false
         ldflags: -s -w
+

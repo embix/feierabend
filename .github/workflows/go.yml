@@ -1,10 +1,10 @@
-name: build-xgo
+name: build cross platform
 on: 
   push:
   pull_request:
 jobs:
   xgo:
-    name: Build cross platform
+    name: xgo
     strategy:
       matrix:
         go_version:
@@ -23,13 +23,13 @@ jobs:
       uses: crazy-max/ghaction-xgo@v0.4.0
       with:
         go_version: ${{ matrix.go_version }}
-        dest: build/${{ matrix.go_version }}/${{ matrix.os }}/${{ matrix.arch }}
+        dest: build
         targets: ${{ matrix.os }}/${{ matrix.arch }}
-        v: true
-        x: true
+        v: false
+        x: false
         ldflags: -s -w
     - name: upload artifacts
       uses: actions/upload-artifact@master
       with:
         name: binary ${{ matrix.go_version }} ${{ matrix.os }} ${{ matrix.arch }}
-        path: build/github.com/fleaz/${{ matrix.go_version }}/${{ matrix.os }}/${{ matrix.arch }}
+        path: build/github.com/fleaz

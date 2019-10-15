@@ -32,5 +32,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: binary ${{ matrix.go_version }} ${{ matrix.os }} ${{ matrix.arch }}
-        path: build/${{ matrix.go_version }}/${{ matrix.os }}/${{ matrix.arch }}
-
+        path: build/github.com/fleaz/${{ matrix.go_version }}/${{ matrix.os }}/${{ matrix.arch }}

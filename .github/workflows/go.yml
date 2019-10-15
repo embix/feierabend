@@ -17,7 +17,7 @@ jobs:
       uses: crazy-max/ghaction-xgo@v0.4.0
       with:
         go_version: ${{ matrix.go_version }}
-        dest: build
+        dest: build/${{ matrix.go_version }}
         targets: windows/amd64,linux/amd64,darwin/amd64
         v: true
         x: true
@@ -25,6 +25,5 @@ jobs:
     - name: upload artifacts
       uses: actions/upload-artifact@master
       with:
-        name: binaries
-        path: build
-
+        name: binary ${{ matrix.go_version }}
+        path: build/${{ matrix.go_version }}
